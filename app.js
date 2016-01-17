@@ -7,9 +7,10 @@ var port = process.env.PORT || 3000;
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// test route
-app.get('/', function (req, res) { res.status(200).send('Chuck Norris fact!') });
-app.post('/', function (req, res) { res.status(200).send('Chuck Norris fact!') });
+// route
+app.post('/', function (req, res) {
+	res.status(200).send('Chuck Norris fact!') 
+});
 
 // error handler
 app.use(function (err, req, res, next) {
