@@ -10,35 +10,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // route
 app.post('/', function (req, res) {
-	// Fetch a random fact for Chuck!
-	request('http://api.icndb.com/jokes/random', function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			var payload = {
-				"response_type": "in_channel",
-				"text": JSON.parse(body).value.joke,
-			};
-			res.status(200).json(payload); 
-		}
-		else {
-			res.status(respsonse.statusCode).response;
-		}
-	});
+    // Fetch a random fact for Chuck!
+    request('http://api.icndb.com/jokes/random', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var payload = {
+                "response_type": "in_channel",
+                "text": JSON.parse(body).value.joke,
+            };
+            res.status(200).json(payload); 
+        }
+        else {
+            res.status(respsonse.statusCode).response;
+        }
+    });
 });
 
 app.get('/', function (req, res) {
-	// Fetch a random fact for Chuck!
-	request('http://api.icndb.com/jokes/random', function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			var payload = {
-				"response_type": "in_channel",
-				"text": JSON.parse(body).value.joke,
-			};
-			res.status(200).json(payload); 
-		}
-		else {
-			res.status(respsonse.statusCode).response;
-		}
-	});
+    // Fetch a random fact for Chuck!
+    request('http://api.icndb.com/jokes/random', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var payload = {
+                "response_type": "in_channel",
+                "text": JSON.parse(body).value.joke,
+            };
+            res.status(200).json(payload); 
+        }
+        else {
+            res.status(respsonse.statusCode).response;
+        }
+    });
 });
 
 // error handler
