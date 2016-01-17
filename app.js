@@ -16,11 +16,11 @@ app.post('/', function (req, res) {
 			var payload = {
 				"response_type": "in_channel",
 				"text": JSON.parse(body).value.joke,
-				"attachments": [
-					{
-						"text": "Chuck Norris is the fucking man!"
-					}
-				]
+// 				"attachments": [
+// 					{
+// 						"text": ""
+// 					}
+// 				]
 			};
 			res.status(200).json(payload); 
 		}
