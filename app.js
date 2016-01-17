@@ -9,7 +9,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // route
 app.post('/', function (req, res) {
-	res.status(200).send('Chuck Norris fact!') 
+	var payload = {
+		text: 'Chuck Norris fact generator!'
+	};
+
+	res.status(200).json(payload); 
 });
 
 // error handler
