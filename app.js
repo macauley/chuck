@@ -10,11 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // route
 app.post('/', function (req, res) {
 	var payload = {
-		response_type: "in_channel",
-		text: 'Chuck Norris fact generator!',
-		attachments: [
+		"response_type": "in_channel",
+		"text": "Chuck Norris fact generator!",
+		"attachments": [
 			{
-				text: "Chuck Norris is the fucking man!"
+				"text": "Chuck Norris is the fucking man!"
 			}
 		]
 	};
