@@ -1,7 +1,7 @@
 {
   "name": "chuck",
   "version": "1.0.0",
-  "description": "Middleware to Chuck Norris fact generator",
+  "description": "Middleware to Chuck Norris fact generator (http://www.icndb.com/api/)",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
