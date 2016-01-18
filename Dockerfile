@@ -1,4 +1,4 @@
-FROM linode/server-node-js
+FROM node:argon
 
 # Create app directory
 RUN mkdir -p /usr/src/app
