@@ -1,7 +1,7 @@
 {
   "name": "chuck",
   "version": "1.0.0",
-  "description": "Middleware to Chuck Norris fact generator (http://www.icndb.com/api/)",
+  "description": "Node.js app to serve as a middleman to http://www.icndb.com for Slack slash command integration.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,10 @@
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "request": "^2.67.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macauley/chuck.git"
+  },
+  "scripts": {"start": "node app.js"}
 }
