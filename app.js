@@ -31,7 +31,7 @@ app.post('/thedude', function (req, res) {
         if (!error && response.statusCode == 200) {
             var payload = {
                 "response_type": "in_channel",
-                "text": body,
+                "text": "\n" + body,
             };
             res.status(200).json(payload);
         }
