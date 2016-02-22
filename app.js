@@ -17,13 +17,30 @@ app.post('/', function (req, res) {
                 "response_type": "in_channel",
                 "text": JSON.parse(body).value.joke,
             };
-            res.status(200).json(payload); 
+            res.status(200).json(payload);
         }
         else {
             res.status(respsonse.statusCode).response;
         }
     });
 });
+
+app.post('/thedude', function (req, res) {
+    // Fetch a random fact for Big Lebowski!
+    request('http://lebowski.me/api/quotes/random.txt', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var payload = {
+                "response_type": "in_channel",
+                "text": body,
+            };
+            res.status(200).json(payload);
+        }
+        else {
+            res.status(respsonse.statusCode).response;
+        }
+    });
+});
+
 
 app.get('/', function (req, res) {
     // Fetch a random fact for Chuck!
@@ -33,7 +50,7 @@ app.get('/', function (req, res) {
                 "response_type": "in_channel",
                 "text": JSON.parse(body).value.joke,
             };
-            res.status(200).json(payload); 
+            res.status(200).json(payload);
         }
         else {
             res.status(respsonse.statusCode).response;
