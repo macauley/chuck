@@ -73,7 +73,7 @@ app.listen(port, function () {
 var joinlines = function(lines) {
   var ret = []
   lines.forEach(function(line){
-    ret.push('*_' + line.character.name '_*' + '\n' + line.text);
+    ret.push('*_' + line.character.name + '_*' + '\n' + line.text);
   });
   return ret.join('\n\n') + '\n';
 };
