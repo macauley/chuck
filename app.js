@@ -9,7 +9,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // route
-app.post('/', function (req, res) {
+app.post('/chuck', function (req, res) {
     // Fetch a random fact for Chuck!
     request('http://api.icndb.com/jokes/random', function (error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -26,39 +26,50 @@ app.post('/', function (req, res) {
 });
 
 app.post('/thedude', function (req, res) {
-    // Fetch a random fact for Big Lebowski!
-    request('http://lebowski.me/api/quotes/random', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var data = JSON.parse(body);
-            var markdownQuote = joinlines(data['quote']['lines']);
-            var payload = {
-                "response_type": "in_channel",
-                "text": markdownQuote,
-            };
-            res.status(200).json(payload);
-        }
-        else {
-            res.status(respsonse.statusCode).response;
-        }
-    });
+    if (req.body.text !== '') {
+        // Fetch a quote based on provided search term
+        var searchTerm = req.body.text.replace(/\s+/g,'+');
+        var url = 'http://lebowski.me/api/quotes/search?term=' + searchTerm;
+        console.log("Requesting " + url);
+
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var data = JSON.parse(body);
+                var markdownQuote = '';
+                data['results'].forEach(function(result){
+                    markdownQuote += joinlines(result['lines']);
+                });
+                                       
+                var payload = {
+                    "response_type": "in_channel",
+                    "text": markdownQuote,
+                };
+                res.status(200).json(payload);
+            }
+            else {
+                res.status(respsonse.statusCode).response;
+            }
+        });        
+    }
+    else {
+        // Fetch a random quote for Big Lebowski!
+        request('http://lebowski.me/api/quotes/random', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var data = JSON.parse(body);
+                var markdownQuote = joinlines(data['quote']['lines']);
+                var payload = {
+                    "response_type": "in_channel",
+                    "text": markdownQuote,
+                };
+                res.status(200).json(payload);
+            }
+            else {
+                res.status(respsonse.statusCode).response;
+            }
+        });
+    }
 });
 
-
-app.get('/', function (req, res) {
-    // Fetch a random fact for Chuck!
-    request('http://api.icndb.com/jokes/random', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var payload = {
-                "response_type": "in_channel",
-                "text": JSON.parse(body).value.joke,
-            };
-            res.status(200).json(payload);
-        }
-        else {
-            res.status(respsonse.statusCode).response;
-        }
-    });
-});
 
 // error handler
 app.use(function (err, req, res, next) {
