@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // route
 app.post('/chuck', function (req, res) {
     // Fetch a random fact for Chuck!
-    request('http://api.icndb.com/jokes/random', function (error, response, body) {
+    request('http://api.icndb.com/jokes/random?escape=javascript', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var payload = {
                 "response_type": "in_channel",
@@ -39,7 +39,7 @@ app.post('/thedude', function (req, res) {
                 data['results'].forEach(function(result){
                     markdownQuote += joinlines(result['lines']);
                 });
-                                       
+
                 var payload = {
                     "response_type": "in_channel",
                     "text": markdownQuote,
@@ -49,7 +49,7 @@ app.post('/thedude', function (req, res) {
             else {
                 res.status(respsonse.statusCode).response;
             }
-        });        
+        });
     }
     else {
         // Fetch a random quote for Big Lebowski!
