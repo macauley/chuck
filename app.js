@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // route
 app.post('/chuck', function (req, res) {
     // Fetch a random fact for Chuck!
-    request('http://api.icndb.com/jokes/random?escape=javascript', function (error, response, body) {
+    var url = 'http://api.icndb.com/jokes/random?escape=javascript';    
+    console.log("Requesting " + url);
+    request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var payload = {
                 "response_type": "in_channel",
